@@ -70,8 +70,7 @@
           "options": {
             "ssl": true,
             "sslCert": "./ssl/localhost.pem",
-            "sslKey": "./ssl/localhost-key.pem",
-            "port": 4200
+            "sslKey": "./ssl/localhost-key.pem"
           },
           "builder": "@angular/build:dev-server",
           "configurations": {
