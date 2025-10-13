@@ -14,7 +14,7 @@ export class ServerError {
   protected showDetails = false;
     constructor() { 
       const navigation = this.router.currentNavigation();
-      this.error = navigation?.extras?.state?.['error'];
+      this.error.set(navigation?.extras?.state?.['error'] ?? null);
     }
 
 
