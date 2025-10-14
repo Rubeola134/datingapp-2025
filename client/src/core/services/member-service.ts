@@ -10,6 +10,7 @@ import { Member, Photo } from '../../types/member';
 export class MemberService {
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl;
+editMode: any;
 
     getMembers() {
     return this.http.get<Member[]>(this.baseUrl + 'members');
