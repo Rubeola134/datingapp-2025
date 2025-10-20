@@ -13,16 +13,16 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       if (error) {
         switch (error.status) {
           case 400:
-            if(error.error.errors){
+            if (error.error.errors) {
               const modelStateErrors = [];
               for (const key in error.error.errors) {
                 if (error.error.errors[key]) {
                   modelStateErrors.push(error.error.errors[key]);
                 }
-                
+
               }
               throw modelStateErrors.flat();
-            } else{
+            } else {
               toast.error(error.error)
             }
             break;

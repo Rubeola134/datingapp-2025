@@ -28,5 +28,9 @@ public class Member
     [JsonIgnore]
     [ForeignKey(nameof(Id))]
     public AppUser User { get; set; } = null!;
-    
+
+    public static implicit operator Member(Member v)
+    {
+        throw new NotImplementedException();
+    }
 }
