@@ -2,6 +2,7 @@ using System.Security.Claims;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interface;
 using API.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -13,9 +14,11 @@ namespace API.Controllers
     public class MembersController(IMemberRepository memberRepository, IPhotosService photoService) : BaseApiController
     {
         [HttpGet]  //locahost:5001/api/members/
-        public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers()
+        public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers([FromQuery]MemberParams memberParams)
         {
-            return Ok(await memberRepository.GetMembersAsync());
+            memberParams.CurrentMemberId = User.GetMemberId();
+            
+            return Ok(await memberRepository.GetMembersAsync(memberParams));
         }
 
 
